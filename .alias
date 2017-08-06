@@ -1,0 +1,1 @@
+alias db="python3 ~/lalamove/tools/db.py"
