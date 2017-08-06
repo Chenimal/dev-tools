@@ -25,6 +25,7 @@ if selected_city not in o[selected_env][selected_project]:
     print(Fore.RED+ "Naive")
     exit()
 
+print(Fore.WHITE+"Connecting DB...")
 call(o[selected_env][selected_project][selected_city].split(' '))
 
 
