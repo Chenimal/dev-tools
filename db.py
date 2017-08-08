@@ -19,14 +19,21 @@ if selected_project not in o[selected_env]:
     print(Fore.RED+ "Sometimes naive")
     exit()
 
+cities = o[selected_env][selected_project]
+# if only one city, run early
+if len(cities) == 1:
+	print(Fore.WHITE+"Connecting DB...")
+	call(list(cities.values())[0].split(' '))
+	exit()
+
 # select city
-selected_city = input(Fore.GREEN + (',').join(list(o[selected_env][selected_project].keys())) + ": ")
-if selected_city not in o[selected_env][selected_project]:
+selected_city = input(Fore.GREEN + (',').join(list(cities.keys())) + ": ")
+if selected_city not in cities:
     print(Fore.RED+ "Naive")
     exit()
 
 print(Fore.WHITE+"Connecting DB...")
-call(o[selected_env][selected_project][selected_city].split(' '))
-
+call(cities[selected_city].split(' '))
+exit()
 
 
