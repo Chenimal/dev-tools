@@ -13,13 +13,18 @@ if selected_env not in o:
     print(Fore.RED+ "Too young")
     exit()
 
-# select projects
-selected_project = input(Fore.GREEN + (',').join(list(o[selected_env].keys())) + ": ")
-if selected_project not in o[selected_env]:
-    print(Fore.RED+ "Too simple")
-    exit()
+projects = o[selected_env]
+# if only one project, auto-select it
+if len(projects) == 1:
+    selected_project = list(projects.values())[0]
+else:
+    # select projects
+    selected_project = input(Fore.GREEN + (',').join(list(projects.keys())) + ": ")
+    if selected_project not in projects:
+        print(Fore.RED+ "Too simple")
+        exit()
 
-cities = o[selected_env][selected_project]
+cities = projects[selected_project]
 # if only one city, run early
 if len(cities) == 1:
 	print(Fore.WHITE+"Connecting DB...")
