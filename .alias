@@ -1,2 +1,2 @@
-alias db="python3 ~/lalamove/tools/db.py"
+alias db="python3 ~/lalamove/tools/connect_db.py"
 alias server="~/web/connect/all.sh"
