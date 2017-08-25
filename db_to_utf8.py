@@ -8,15 +8,12 @@ import time
 import re
 import yaml
 
-env = "ldev"
-city = 'th'
+env = "prod"
+city = 'tw'
 # load config file
 o = yaml.load(open("/Users/chen/lalamove/data/db.yml"))
 
-db_config = o[env]['mobile'] if 'mobile' in o[env].keys() else o[env]['all']
-db_config = db_config['th'] if 'th' in db_config.keys() else db_config['all']
-if 'db' not in db_config.keys():
-    db_config['db'] = env + "-" + city
+db_config = o[env]['mobile'][city]
 
 allowed_collations = ['utf8_unicode_ci', 'utf8_general_ci']
 ignored_field_types = ['int', 'decimal', 'datetime', 'date', 'tinyint', 'smallint', 'float', 'timestamp', 'polygon', 'geometry']
@@ -28,7 +25,7 @@ cur = conn.cursor(MySQLdb.cursors.DictCursor)
 # get all tables' names
 def getAllTables():
     result = []
-    cnt = cur.execute("SHOW TABLE STATUS FROM `" + db_name + "`")
+    cnt = cur.execute("SHOW TABLE STATUS FROM `" + db_config['db'] + "`")
     print("# of tables: " + str(cnt))
     tables =  cur.fetchmany(cnt)
     for i in tables:
@@ -46,7 +43,7 @@ def getLatinTables(all_tables):
 #change table one by one
 def toUtf8(tables):
     #default db charset(for new tables):
-    cur.execute("ALTER DATABASE `" + db_name + "` DEFAULT CHARACTER SET utf8")
+    cur.execute("ALTER DATABASE `" + db_config['db'] + "` DEFAULT CHARACTER SET utf8")
     i=0
     for table_name in tables:
         i+=1
