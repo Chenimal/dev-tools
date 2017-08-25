@@ -8,6 +8,7 @@ import time
 import re
 import yaml
 
+# ph, sg, hk, th
 env = "prod"
 city = 'tw'
 # load config file
