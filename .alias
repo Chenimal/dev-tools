@@ -1,2 +1,4 @@
+alias use-http-proxy="export http_proxy='http://localhost:8118';export https_proxy='http://localhost:8118'"
+alias unset-http-proxy="unset http_proxy;unset https_proxy"
 alias db="python3 ~/lalamove/tools/connect_db.py"
 alias server="~/web/connect/all.sh"
