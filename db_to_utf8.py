@@ -7,10 +7,17 @@ import MySQLdb
 import time
 import re
 import yaml
+import sys
 
 # ph, sg, hk, th
-env = "prod"
-city = 'tw'
+env = "test"
+
+if len(sys.argv) is not 2:
+    print(Fore.RED + "wrong params")
+    exit()
+
+city = sys.argv[1]
+
 # load config file
 o = yaml.load(open("/Users/chen/lalamove/data/db.yml"))
 
@@ -103,7 +110,7 @@ def checkFieldASCII(tables):
                     is_ascii = all(ord(c) < 128 for c in v[row['Field']])
                     if not is_ascii:
                         print(Fore.RED, v[row['Field']], row['Field'], i[0])
-                        exit()
+                        #exit()
 
 
 def checkAnyLatinFieldsInUtf8Tables(all_tables):
