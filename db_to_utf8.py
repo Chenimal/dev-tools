@@ -9,8 +9,15 @@ import re
 import yaml
 import sys
 
-# ph, sg, hk, th
-env = "test"
+'''
+Crontab(ph, sg, hk, th):
+0     1       *       *       *       /usr/local/bin/python3 /Users/chen/lalamove/tools/db_to_utf8.py th > /Users/chen/Library/Mobile\ Documents/com\~apple\~CloudDocs/th.log 2>&1
+0     1       *       *       *       /usr/local/bin/python3 /Users/chen/lalamove/tools/db_to_utf8.py ph > /Users/chen/Library/Mobile\ Documents/com\~apple\~CloudDocs/ph.log 2>&1
+0     1       *       *       *       /usr/local/bin/python3 /Users/chen/lalamove/tools/db_to_utf8.py sg > /Users/chen/Library/Mobile\ Documents/com\~apple\~CloudDocs/sg.log 2>&1
+0     1       *       *       *       /usr/local/bin/python3 /Users/chen/lalamove/tools/db_to_utf8.py hk > /Users/chen/Library/Mobile\ Documents/com\~apple\~CloudDocs/hk.log 2>&1
+'''
+
+env = "prod"
 
 if len(sys.argv) is not 2:
     print(Fore.RED + "wrong params")
@@ -19,7 +26,7 @@ if len(sys.argv) is not 2:
 city = sys.argv[1]
 
 # load config file
-o = yaml.load(open("db.yml"))
+o = yaml.load(open("/Users/chen/lalamove/data/db.yml"))
 
 db_config = o[env]['mobile'][city]
 
