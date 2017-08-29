@@ -19,7 +19,7 @@ if len(sys.argv) is not 2:
 city = sys.argv[1]
 
 # load config file
-o = yaml.load(open("/Users/chen/lalamove/data/db.yml"))
+o = yaml.load(open("db.yml"))
 
 db_config = o[env]['mobile'][city]
 
@@ -110,7 +110,7 @@ def checkFieldASCII(tables):
                     is_ascii = all(ord(c) < 128 for c in v[row['Field']])
                     if not is_ascii:
                         print(Fore.RED, v[row['Field']], row['Field'], i[0])
-                        #exit()
+                        # exit()
 
 
 def checkAnyLatinFieldsInUtf8Tables(all_tables):
