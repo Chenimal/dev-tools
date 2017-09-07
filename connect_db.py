@@ -38,6 +38,6 @@ else:
 
 print(Fore.WHITE + "Connecting DB...")
 vars = cities[selected_city]
-call(["mysql", "-h" + vars['host'], "-u" + vars['user'], "-p" +
+call(["mysql", "-A", "-h" + vars['host'], "-u" + vars['user'], "-p" +
       vars['passwd'], vars['db'] if 'db' in vars.keys() else ""])
 exit()

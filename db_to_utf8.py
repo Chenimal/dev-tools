@@ -97,7 +97,7 @@ def checkFieldASCII(tables):
     for i in tables:
         r = cur.execute("DESCRIBE `" + i[0] + "`")
         rows = cur.fetchmany(r)
-        print (Fore.GREEN + "Table:", i[0])
+        print(Fore.GREEN + "Table:", i[0])
         for row in rows:
             skip = False
             for ignore_type in ignored_field_types:
