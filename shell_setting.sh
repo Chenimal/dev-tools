@@ -11,4 +11,4 @@ function proxy_on() {
 }
 
 alias db="python3 ~/lalamove/tools/connect_db.py"
-alias server="~/web/connect/all.sh"
+alias server="python3 ~/lalamove/tools/connect_server.py"
