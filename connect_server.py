@@ -17,5 +17,5 @@ else:
         exit()
 
 env = o[selected_env]
-call(["ssh", "-i", data_path + env['cert'], "ubuntu@" + env['host']])
+call(["itermocil", env['cert']])
 exit()
