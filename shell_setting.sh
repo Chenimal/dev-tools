@@ -12,3 +12,4 @@ function proxy_on() {
 
 alias db="python3 ~/lalamove/tools/connect_db.py"
 alias server="python3 ~/lalamove/tools/connect_server.py"
+alias pi="ssh pi@10.10.8.31"
